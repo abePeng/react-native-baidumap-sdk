@@ -88,6 +88,7 @@ jobs:
             target 'App' do
               pod 'React', path: '../node_modules/react-native', :subspecs => [
                 'DevSupport',
+                'RCTNetwork',
               ]
               pod 'yoga', path: '../node_modules/react-native/ReactCommon/yoga'
               pod 'react-native-baidumap-sdk', path: '../node_modules/react-native-baidumap-sdk/lib/ios'
@@ -101,4 +102,3 @@ stages:
   - name: "build test for example"
     if: branch = master
   - name: "build test for new project"
-    if: branch = release
