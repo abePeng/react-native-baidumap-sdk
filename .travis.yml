@@ -22,44 +22,12 @@ aliases:
     |
       nvm install node
       yarn global add react-native-cli
-      react-native init App --version="0.54.2"
+      react-native init App --version="0.55.0-rc.1"
       cd App
       yarn add react-native-baidumap-sdk
 
 jobs:
   include:
-    - stage: "test js"
-      language: node_js
-      node_js: node
-      cache: yarn
-
-    - stage: "build test for example"
-      language: android
-      jdk: oraclejdk8
-      android: *android
-      before_cache:
-        - rm ~/.gradle/caches/modules-2/modules-2.lock
-      cache: *android-cache
-      script:
-        - nvm install node
-        - yarn
-        - cd android
-        - ./gradlew build
-        - ls -l app/build/outputs/apk
-
-    - stage: "build test for example"
-      language: objective-c
-      osx_image: xcode9.1
-      cache: *ios-cache
-      before_install:
-      script:
-        - nvm install node
-        - brew install yarn
-        - yarn
-        - cd ios
-        - pod install
-        - xcodebuild -workspace RNBaiduMap.xcworkspace -scheme RNBaiduMap -sdk iphonesimulator -quiet
-
     - stage: "build test for new project"
       language: objective-c
       osx_image: xcode9.1
