@@ -4,9 +4,7 @@ aliases:
       - build-tools-23.0.1
       - android-23
       - extra-android-m2repository
-      - extra-android-support
-  
-  - &android-cache
+      - extra-android-support - &android-cache
     directories:
       - ~/.cache/yarn
       - ~/.gradle/caches/modules-2
@@ -38,7 +36,7 @@ jobs:
         - cd ios
         - |
           cat << EOF > Podfile
-            platform :ios, '8.0'
+            platform :ios, '11.0'
             target 'App' do
               pod 'React', path: '../node_modules/react-native', :subspecs => [
                 'DevSupport',
